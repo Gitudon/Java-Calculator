@@ -111,7 +111,10 @@ public class calculator {
         }
     }
     public class Number_System{
-        public static int binary_calculation(int num1, int num2, String operator) {
+        public static int conversion_number(int converted_number, int conversion_number) {
+            return Integer.parseInt(Integer.toString(converted_number, conversion_number));
+        }
+        public static int number_calculation(int base, int num1, int num2, String operator) {
             switch (operator) {
                 case "+" -> {
                     return num1 + num2;
@@ -132,9 +135,6 @@ public class calculator {
                     return 0;
                 }
             }
-        }
-        public static int conversion_number(int converted_number, int conversion_number) {
-            return Integer.parseInt(Integer.toString(converted_number, conversion_number));
         }
     }
     public class Manage_History{
@@ -161,7 +161,7 @@ public class calculator {
     }
     public class Choices{
         public static int calculator_mode() throws IOException {
-            int choice_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            int choice_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
             int select = 0;
             while (true) {
                 // モードはシンプル計算機、関数計算機、三角関数計算機、n進数計算機、行列計算機、バラエティ計算機、定数辞典、自由入力、逆ポーランド記法、終了
@@ -641,7 +641,7 @@ public class calculator {
                     operator = Choices.operate_mode();
                     switch (select) {
                         case 1 -> {
-                            result = Number_System.binary_calculation(num1, num2, operator);
+                            result = Number_System.number_calculation(2, num1, num2, operator);
                             Manage_History.add_history_number_system(num1, num2, 2, operator, result);
                             System.out.println("The answer is: " + result + "\n");
                         }
