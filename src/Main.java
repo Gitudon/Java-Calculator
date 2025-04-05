@@ -3,6 +3,7 @@ import java.io.IOException;
 public class Main {
     static int calculatorMode;
     public static void main(String[] args) throws IOException {
+        History.initializeHistory();
         while (true) {
             calculatorMode = Choice.calculatorMode();
             switch (calculatorMode) {
@@ -43,7 +44,7 @@ public class Main {
                     // Add reverse polish notation Methods.Functionality here
                 }
                 case 10 -> {
-                    History.clearHistory();
+                    History.initializeHistory();
                     System.out.println("\nThe history was cleared.\n");
                 }
                 case 11 -> {

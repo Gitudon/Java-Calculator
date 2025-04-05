@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Calculator {
-    static String history;
     public static void simpleCalculator() throws IOException {
         int choicesList[] = {1, 2, 3, 4, 5, 6, 7};
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,27 +41,27 @@ public class Calculator {
             float result;
             switch (select) {
                 case 1 -> {
-                    result = Methods.Arithmetic.add(num1, num2);
+                    result = Method.Arithmetic.add(num1, num2);
                     System.out.println("The sum is: " + result + "\n");
                     History.addHistory(num1, num2, "+", result);
                 }
                 case 2 -> {
-                    result = Methods.Arithmetic.subtract(num1, num2);
+                    result = Method.Arithmetic.subtract(num1, num2);
                     System.out.println("The difference is: " + result + "\n");
                     History.addHistory(num1, num2, "-", result);
                 }
                 case 3 -> {
-                    result = Methods.Arithmetic.multiply(num1, num2);
+                    result = Method.Arithmetic.multiply(num1, num2);
                     System.out.println("The product is: " + result + "\n");
                     History.addHistory(num1, num2, "×", result);
                 }
                 case 4 -> {
-                    result = Methods.Arithmetic.divide(num1, num2);
+                    result = Method.Arithmetic.divide(num1, num2);
                     System.out.println("The quotient is: " + result + "\n");
                     History.addHistory(num1, num2, "÷", result);
                 }
                 case 5 -> {
-                    result = Methods.Arithmetic.modulo(num1, num2);
+                    result = Method.Arithmetic.modulo(num1, num2);
                     System.out.println("The remainder is: " + result + "\n");
                     History.addHistory(num1, num2, "%", result);
                 }
@@ -115,7 +114,7 @@ public class Calculator {
                     System.out.println("\nEnter the exponent number");
                     num2 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.power(num1, num2);
+                    result = Method.Function.power(num1, num2);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistory(num1, num2, "^", result);
                 }
@@ -123,7 +122,7 @@ public class Calculator {
                     System.out.println("\nEnter the base number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.squareRoot(num1);
+                    result = Method.Function.squareRoot(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num1, "√", result);
                 }
@@ -133,7 +132,7 @@ public class Calculator {
                     System.out.println("\nEnter the root number");
                     num2 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.nRoot(num1, num2);
+                    result = Method.Function.nRoot(num1, num2);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistory(num2, num1, "√", result);
                 }
@@ -141,7 +140,7 @@ public class Calculator {
                     System.out.println("\nEnter the base number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.commonLogarithm(num1);
+                    result = Method.Function.commonLogarithm(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num1, "log_{10}", result);
                 }
@@ -149,7 +148,7 @@ public class Calculator {
                     System.out.println("\nEnter the base number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.naturalLogarithm(num1);
+                    result = Method.Function.naturalLogarithm(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num1, "log", result);
                 }
@@ -159,15 +158,15 @@ public class Calculator {
                     System.out.println("\nEnter the root number");
                     num2 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.generalLogarithm(num1, num2);
+                    result = Method.Function.generalLogarithm(num1, num2);
                     System.out.println("The answer is: " + result + "\n");
-                    history += "log_{" + num2 + "} " + num1 + " = " + result + "\n";
+                    History.addLogHistory(num1, num2, result);
                 }
                 case 7 -> {
                     System.out.println("\nEnter the number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.factorial(num1);
+                    result = Method.Function.factorial(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num1, "!", result);
                 }
@@ -177,7 +176,7 @@ public class Calculator {
                     System.out.println("\nEnter the number of selections");
                     num2 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.permutation(num1, num2);
+                    result = Method.Function.permutation(num1, num2);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistory(num1, num2, "P", result);
                 }
@@ -187,7 +186,7 @@ public class Calculator {
                     System.out.println("\nEnter the number of selections");
                     num2 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.combination(num1, num2);
+                    result = Method.Function.combination(num1, num2);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistory(num1, num2, "C", result);
                 }
@@ -195,15 +194,15 @@ public class Calculator {
                     System.out.println("\nEnter the number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.absoluteValue(num1);
+                    result = Method.Function.absoluteValue(num1);
                     System.out.println("The answer is: " + result + "\n");
-                    History.addHistoryOnSide(num1, history, result);
+                    History.addHistoryOnSide(num1, "|", result);
                 }
                 case 11 -> {
                     System.out.println("\nEnter the number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.ceiling(num1);
+                    result = Method.Function.ceiling(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistoryOnSide(num1, "⌈", result);
                 }
@@ -211,7 +210,7 @@ public class Calculator {
                     System.out.println("\nEnter the number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.floor(num1);
+                    result = Method.Function.floor(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistoryOnSide(num1, "⌊", result);
                 }
@@ -219,7 +218,7 @@ public class Calculator {
                     System.out.println("\nEnter the number");
                     num1 = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Function.round(num1);
+                    result = Method.Function.round(num1);
                     System.out.println("The answer is: " + result + "\n");
                     History.addHistoryOnSide(num1, "〉", result);
                 }
@@ -271,7 +270,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.sine(num);
+                    result = Method.Trigonometric.sine(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "sin", result);
                 }
@@ -279,7 +278,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.cosine(num);
+                    result = Method.Trigonometric.cosine(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "cos", result);
                 }
@@ -287,7 +286,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.tangent(num);
+                    result = Method.Trigonometric.tangent(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "tan", result);
                 }
@@ -295,7 +294,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.secant(num);
+                    result = Method.Trigonometric.secant(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "sec", result);
                 }
@@ -303,7 +302,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.cosecant(num);
+                    result = Method.Trigonometric.cosecant(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "csc", result);
                 }
@@ -311,7 +310,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.cotangent(num);
+                    result = Method.Trigonometric.cotangent(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "cot", result);
                 }
@@ -319,7 +318,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.arcsine(num);
+                    result = Method.Trigonometric.arcsine(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "arcsin", result);
                 }
@@ -327,7 +326,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.arccosine(num);
+                    result = Method.Trigonometric.arccosine(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "arccos", result);
                 }
@@ -335,7 +334,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.arctangent(num);
+                    result = Method.Trigonometric.arctangent(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "arctan", result);
                 }
@@ -343,7 +342,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.sinc(num);
+                    result = Method.Trigonometric.sinc(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "sinc", result);
                 }
@@ -351,7 +350,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.sinh(num);
+                    result = Method.Trigonometric.sinh(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "sinh", result);
                 }
@@ -359,7 +358,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.cosh(num);
+                    result = Method.Trigonometric.cosh(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "cosh", result);
                 }
@@ -367,7 +366,7 @@ public class Calculator {
                     System.out.println("\nEnter the angle in radians");
                     num = Integer.parseInt(br.readLine());
                     System.out.println("");
-                    result = Methods.Trigonometric.tanh(num);
+                    result = Method.Trigonometric.tanh(num);
                     System.out.println("The answer is: " + result + "\n");
                     History.addSingleHistory(num, "tanh", result);
                 }
@@ -406,7 +405,7 @@ public class Calculator {
                         num1 = Integer.parseInt(br.readLine());
                         System.out.println("\nEnter the conversion number");
                         num2 = Integer.parseInt(br.readLine());
-                        result = Methods.NumberSystem.convertNumber(num1, num2);
+                        result = Method.NumberSystem.convertNumber(num1, num2);
                         System.out.println("The answer is: " + result + "(" + num2 +")\n");
                     }
                     case 7 ->{
@@ -427,7 +426,7 @@ public class Calculator {
                 operator = Choice.operationMode();
                 switch (select) {
                     case 1 -> {
-                        result = Methods.NumberSystem.numberCalculation(2, num1, num2, operator);
+                        result = Method.NumberSystem.numberCalculation(2, num1, num2, operator);
                         History.addNumberSystemHistory(num1, num2, 2, operator, result);
                         System.out.println("The answer is: " + result + "\n");
                     }
